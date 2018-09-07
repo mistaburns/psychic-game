@@ -30,33 +30,34 @@
 	      wins++;
 	      guessesLeft = 9;
 	      lettersGuessed.length = 0;
-	      computerGuess.length = 0;
+          computerGuess.length = 0;
+          prevUserGuess= 0;
 	      var compGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 	      computerGuess.push(compGuess);
 	 
       }
 
-      else if ((playerGuess !== computerGuess[0]) && (guessesLeft > 0)) {
+      else if ((userGuess !== computerGuess[0]) && (guessesLeft > 0)) {
 	      guessesLeft = guessesLeft-1;
       }
 
       else {
 	      losses++;
-  	    guessesLeft = 9;
+  	      guessesLeft = 9;
 	      lettersGuessed.length = 0;
-	      computerGuess.length = 0;
+          computerGuess.length = 0;
+          prevUserGuess= 0;
 	      var compGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
 	      computerGuess.push(compGuess);
-	      console.log(computerGuess[0]);
       }
 
-      var update = "<p>Guess what letter I'm thinking of!</p>" +
+      var update = 
           "<p>Wins: " + wins + "</p>" +
           "<p>Losses: " + losses + "</p>" +
-          "<p>Guesses left: " + guessesLeft + "</p>" +
-          "<p>Your guesses so far: " + lettersGuessed + "</p>";
+          "<p>Guesses remaining: " + guessesLeft + "</p>" +
+          "<p>Previous Guesses: " + prevUserGuess + "</p>";
  
-      document.querySelector(".game").innerHTML = update;
+      document.querySelector("#stats").innerHTML = update;
   
     
     };
